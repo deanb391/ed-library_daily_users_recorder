@@ -1,0 +1,19 @@
+{
+  "name": "ed-library_daily_users_recorder",
+  "version": "1.0.0",
+  "description": "nothing",
+  "keywords": [
+    "edlib"
+  ],
+  "license": "ISC",
+  "author": "Dean Blessed",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run tests",
+    "main": "node index.js"
+  },
+  "dependencies": {
+    "node-appwrite": "^22.0.0"
+  }
+}
