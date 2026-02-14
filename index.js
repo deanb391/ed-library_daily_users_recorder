@@ -24,12 +24,24 @@ module.exports = async ({ req, res, log, error }) => {
 
     const isoDate = todayStart.toISOString().split("T")[0];
 
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ];
+
+    const day = days[todayStart.getDay()];
+
     const activeUsers = await databases.listDocuments(
       DATABASE_ID,
       USER_COLLECTION,
       [
         Query.greaterThanEqual("lastTime", todayStart.toISOString()),
-        Query.limit(1000) // important if you scale
+        Query.limit(1000)
       ]
     );
 
@@ -41,6 +53,7 @@ module.exports = async ({ req, res, log, error }) => {
       isoDate,
       {
         date: isoDate,
+        day: day,
         count: count
       }
     );
@@ -48,6 +61,7 @@ module.exports = async ({ req, res, log, error }) => {
     return res.json({
       success: true,
       date: isoDate,
+      day,
       count
     });
 
