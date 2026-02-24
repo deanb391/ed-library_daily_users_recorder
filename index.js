@@ -13,7 +13,10 @@ module.exports = async ({ req, res, log, error }) => {
     const USER_COLLECTION = "user";
     const DAILY_COLLECTION = "daily_users";
 
-    const now = new Date();
+    const now = new Date(
+  new Date().toLocaleString("en-US", { timeZone: "Africa/Lagos" })
+);
+
 
     const todayStart = new Date(
       now.getFullYear(),
